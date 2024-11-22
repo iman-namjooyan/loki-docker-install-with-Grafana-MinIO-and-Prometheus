@@ -1,0 +1,38 @@
+auth_enabled: false
+
+server:
+  http_listen_port: 3100
+
+common:
+  instance_addr: 127.0.0.1
+  path_prefix: /loki
+  replication_factor: 1
+  ring:
+    kvstore:
+      store: inmemory
+  compactor_address: http://localhost:3100
+  storage:
+    s3:
+      endpoint: localhost:9000
+      insecure: true
+      bucketnames: loki-data
+      access_key_id: loki
+      secret_access_key: supersecret
+      s3forcepathstyle: true
+ruler:
+  storage:
+    s3:
+      bucketnames: loki-ruler
+
+compactor:
+  working_directory: /tmp/compactor
+
+schema_config:
+  configs:
+    - from: 2020-10-24
+      store: tsdb
+      object_store: s3
+      schema: v13
+      index:
+        prefix: index_
+        period: 24h
