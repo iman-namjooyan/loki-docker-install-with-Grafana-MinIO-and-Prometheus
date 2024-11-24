@@ -54,8 +54,17 @@ services:
           - name: Loki
             type: loki
             url: http://localhost:3100
+          - name: Prometheus
+            type: prometheus
+            url: http://localhost:3100
         EOF
+
         /run.sh
+
+    volumes:
+      - ./grafana-data/provisioning:/etc/grafana/provisioning
+      - ./grafana-data:/var/lib/grafana  
+
     healthcheck:
       test: [ "CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:3000/api/health || exit 1" ]
       interval: 10s
