@@ -44,7 +44,7 @@ services:
       - 'GF_AUTH_ANONYMOUS_ENABLED=true'
       - 'GF_AUTH_ANONYMOUS_ORG_ROLE=Admin'
       - 'GF_SMTP_ENABLED=true'
-      - 'GF_SMTP_HOST=mail.agri-bank.com:25'
+      - 'GF_SMTP_HOST=mail.testcompany.com:25'
       - 'GF_SMTP_USER=grafana@test.com'
       - 'GF_SMTP_PASSWORD=password1234'
       - 'GF_SMTP_FROM_ADDRESS=grafana@test.com'
